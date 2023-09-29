@@ -29,43 +29,37 @@ public class IndexController {
         model.addAttribute("receipt", ricettaList);// passo la lista delle ricette al model
         return "ricette/lista";
     }
+
+
+    // controller che mostra la pagina di creazione di una ricetta
+    @GetMapping("/create") // url
+    public String create(Model model) {
+        // aggiungiamo al model un attributo di tipo Book
+        model.addAttribute("receipt", new Ricetta());
+
+        return "ricette/form"; // template
+    }
+
+    //metodo che gestisce la POST di creazione di una ricetta
+
+
+    @PostMapping("/create")
+    public String doCreate(@Valid @ModelAttribute("receipt") Ricetta formRicetta,
+                           BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "ricette/form"; // template
+        }
+
+
+        formRicetta.setTitle(formRicetta.getTitle().toUpperCase());
+
+        // per salvare la ricetta su database chiama in aiuto il ricettaRepository
+        ricettaRepository.save(formRicetta);
+        // se la ricetta è stata salvata con successo faccio una redirect alla pagina della lista
+        return "redirect:/ricette";
+    }
 }
-
-
-
-           /*// controller che mostra la pagina di creazione di una ricetta
-            @GetMapping("/create") // url
-            public String create(Model model) {
-                // aggiungiamo al model un attributo di tipo Book
-                model.addAttribute("receipt", new Ricetta());
-
-                return "ricette/form"; // template
-            }
-
-             metodo che gestisce la POST di creazione di un Book
-
-             * l'annnotation @Valid davanti al parametro formBook fa scattare la validazione degli attributi
-             * di Book che hanno delle annotation di validazione (es. @Notblank)
-             * Gli errori di validazione vengono raccolti nella mappa BindingResult bindingResult
-             *
-            @PostMapping("/create")
-            public String doCreate(@Valid @ModelAttribute("pizza") Pizza formPizza,
-                                   BindingResult bindingResult) {
-                // formBook è un oggetto Book costruito con i dati che arrivano dalla request, quindi dal form
-
-                // prima di salvare il book verifico che non ci siano errori di validazione
-                if (bindingResult.hasErrors()) {
-                    return "pizze/form"; // template
-                }
-
-                // posso manipolare l'oggetto formBook prima di salvarlo
-                formPizza.setName(formPizza.getName().toUpperCase());
-
-                // per salvare il book su database chiama in aiuto il bookRepository
-                pizzaRepository.save(formPizza);
-                // sela pizza è stato salvata con successo faccio una redirect alla pagina della lista
-                return "redirect:/pizze";
-            }
 
           /* /* metodi per update
             @GetMapping("/edit/{id}")

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous">
+    <title> Receipt List</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create receipt</h1>
+    <hr>
+    <!-- ho a disposizione un attributo che si chiama book -->
+    <!-- inoltre la classe #fields di Thymeleaf contiene la mappa con eventuali errori -->
+    <form
+            id="receipt-form"
+            th:action="@{/ricette/create}"
+            th:object="${receipt}"
+            method="POST"
+    >
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Titolo</label>
+            <input type="text" class="form-control" id="title" th:field="*{title}" required
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="listAndQuantities" class="form-label">lista e quantita</label>
+            <input type="text" class="form-control" id="listAndQuantities" th:field="*{listAndQuantities}" required
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('listAndQuantities')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('listAndQuantities')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="portions" class="form-label"> portions</label>
+            <input type="text" class="form-control" id="portions" th:field="*{portions}" required
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('portions')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('listAndQuantities')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="img" class="form-label"> image</label>
+            <input type="url" class="form-control" id="img" th:field="*{img}" required
+                   th:errorClass="is-invalid">
+        </div>
+        <div class="mb-3">
+            <label for="cookingTime" class="form-label"> time</label>
+            <input type="text" class="form-control" id="cookingTime" th:field="*{cookingTime}" required
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('cookingTime')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('cookingTime')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="cooking" class="form-label"> description</label>
+            <input type="text" class="form-control" id="cooking" th:field="*{cooking}" required
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('cooking')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('cooking')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-primary" th:href="@{/ricette}">Cancel</a>
+        </div>
+    </form>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous">
+
+</script>
+</body>
+</html>

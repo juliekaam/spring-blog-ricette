@@ -24,9 +24,9 @@
             <th>id</th>
             <th>title</th>
             <th>listAndQuantities</th>
+            <th>portions</th>
             <th>img</th>
             <th>cookingTime</th>
-            <th>portions</th>
             <th> cooking</th>
 
 
@@ -37,8 +37,8 @@
             <td th:text="${ricetta.id}"></td>
             <td th:text="${ricetta.title}"></td>
             <td th:text="${ricetta.listAndQuantities}"></td>
-            <td th:src="${ricetta.img}"></td>
             <td th:text="${ricetta.portions}"></td>
+            <img th:src="${ricetta.img}">
             <td th:text="${ricetta.cookingTime}"></td>
             <td th:text="${ricetta.cooking}"></td>
         </tr>
