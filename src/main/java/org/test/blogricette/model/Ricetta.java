@@ -1,6 +1,7 @@
 package org.test.blogricette.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
@@ -14,10 +15,13 @@ public class Ricetta {
     private Integer id;
     @NotBlank
     private String title;
+    @Column(length = 1024)
     private String listAndQuantities;
     private String img;
     private int cookingTime;
+    @Min(1)
     private int portions;
+    @Column(length = 1024)
     private String cooking;
 
     //getter & setter
