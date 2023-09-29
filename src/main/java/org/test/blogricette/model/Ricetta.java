@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 
+@Entity
 @Table(name="Ricette")
 public class Ricetta {
 
