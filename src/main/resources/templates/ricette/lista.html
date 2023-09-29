@@ -12,6 +12,38 @@
     <title> Receipt List</title>
 </head>
 <body>
+<div class="container bg-warning text-center">
+    <h1>Your Receipt</h1>
+</div>
+<div class="container ">
+
+    <a class="btn btn-primary" th:href="@{/ricette/create}">Add Receipt</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>listAndQuantities</th>
+            <th>img</th>
+            <th>cookingTime</th>
+            <th>portions</th>
+            <th> cooking</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ricetta : ${receipt}">
+            <td th:text="${ricetta.id}"></td>
+            <td th:text="${ricetta.title}"></td>
+            <td th:text="${ricetta.listAndQuantities}"></td>
+            <td th:src="${ricetta.img}"></td>
+            <td th:text="${ricetta.portions}"></td>
+            <td th:text="${ricetta.cookingTime}"></td>
+            <td th:text="${ricetta.cooking}"></td>
+        </tr>
+        </tbody>
+    </table>
 
 
 

@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping ("/")
+@RequestMapping ("/ricette")
 public class IndexController {
     @Autowired
     private RicettaRepository ricettaRepository;
@@ -31,26 +31,15 @@ public class IndexController {
     }
 }
 
-           //metodo show che mostra il detaglio di una pizza preso per id
-           /* @GetMapping("/show/{pizzaId}")
-            public String show(@PathVariable("pizzaId")Integer id, org.springframework.ui.Model model){
-                Optional<Pizza> pizzaOptional=pizzaRepository.findById(id);
-                if(pizzaOptional.isPresent()){
-                    Pizza pizzaFound=pizzaOptional.get();
-                    model.addAttribute("pizza",pizzaFound);
-                    return "pizze/detailpizza";
-                }else {
-                    throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-                }
-            }
 
-            // controller che mostra la pagina di creazione di un Book
+
+           /*// controller che mostra la pagina di creazione di una ricetta
             @GetMapping("/create") // url
-            public String create(org.springframework.ui.Model model) {
+            public String create(Model model) {
                 // aggiungiamo al model un attributo di tipo Book
-                model.addAttribute("pizza", new Pizza());
+                model.addAttribute("receipt", new Ricetta());
 
-                return "pizze/form"; // template
+                return "ricette/form"; // template
             }
 
              metodo che gestisce la POST di creazione di un Book
@@ -76,9 +65,9 @@ public class IndexController {
                 pizzaRepository.save(formPizza);
                 // sela pizza è stato salvata con successo faccio una redirect alla pagina della lista
                 return "redirect:/pizze";
-            }*/
+            }
 
-           /* metodi per update
+          /* /* metodi per update
             @GetMapping("/edit/{id}")
             public String edit(@PathVariable Integer id, org.springframework.ui.Model model) {
                 // cerco su database il libro con quell'id

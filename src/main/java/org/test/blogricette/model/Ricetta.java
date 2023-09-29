@@ -16,7 +16,7 @@ public class Ricetta {
     private String title;
     private String listAndQuantities;
     private String img;
-    private LocalDate cookingTime;
+    private int cookingTime;
     private int portions;
     private String cooking;
 
@@ -53,11 +53,12 @@ public class Ricetta {
         this.img = img;
     }
 
-    public LocalDate getCookingTime() {
+
+    public int getCookingTime() {
         return cookingTime;
     }
 
-    public void setCookingTime(LocalDate cookingTime) {
+    public void setCookingTime(int cookingTime) {
         this.cookingTime = cookingTime;
     }
 
